@@ -849,10 +849,17 @@ keys.forEach((elem) => {
 			}
 		}
 		else if(str == ""){
-			if(index > 0)
-				index = index - 1;
-			else
-				alert("No character here");
+		if(index < 1)
+			alert("No character here");
+    		if(grid[curRow].children[index]){
+				grid[curRow].children[index].style.backgroundColor = "#fff";
+				grid[curRow].children[index].style = "transform:scale(1.0)";
+    		}
+    		index = index - 1;
+    		word = word.slice(0,index);
+		grid[curRow].children[index].firstChild.textContent = "";
+		grid[curRow].children[index].style = "transform:scale(1.05)";
+		grid[curRow].children[index].style.backgroundColor = "#eee";
 		}
 		else{
 			if(index >= wordLen)
