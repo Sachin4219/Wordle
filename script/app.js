@@ -849,8 +849,10 @@ keys.forEach((elem) => {
 			}
 		}
 		else if(str == ""){
-		if(index < 1)
+		if(index < 1){
 			alert("No character here");
+			return;
+		}
     		if(grid[curRow].children[index]){
 				grid[curRow].children[index].style.backgroundColor = "#fff";
 				grid[curRow].children[index].style = "transform:scale(1.0)";
