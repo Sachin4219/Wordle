@@ -144,17 +144,19 @@ i{
 }
 .gameover div{
 	width: 100%;
-	height: 160px;
+	height: fit-content;
 	font-size: 40px;
 	font-family: 'Roboto',sans-serif;
 	font-weight: 700;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	align-items: center;
 	background-color: #EEE;
 	color: #222;
+}
+#msg{
+	margin-bottom:30px;
 }
 .gameover .btn{
 	width: fit-content;
@@ -196,6 +198,12 @@ i{
 
 	.keyrow .delete{
 		font-size: 4px;
+	}
+	.gameover #msg{
+		font-size:25px;
+	}
+	.gameover .btn{
+		font-size:15px;
 	}
 
 }
