@@ -169,7 +169,7 @@ i{
 	cursor: pointer;
 }
 
-@media screen and (max-widt:1000px){
+@media screen and (max-width:1000px){
 	.gameover #msg{
 		font-size:32px;
 	}
