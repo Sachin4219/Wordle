@@ -169,6 +169,15 @@ i{
 	cursor: pointer;
 }
 
+@media screen and (max-widt:1000px){
+	.gameover #msg{
+		font-size:32px;
+	}
+	.gameover .btn{
+		font-size:20px;
+	}
+}
+
 @media screen and (max-width: 600px){
 	.nav-center{
 		font-size: 18px;
