@@ -156,7 +156,7 @@ i{
 	color: #222;
 }
 #msg{
-	margin-bottom:30px;
+	margin-bottom: 30px;
 }
 .gameover .btn{
 	width: fit-content;
@@ -167,15 +167,6 @@ i{
 	border-radius: 5px;
 	font-size: 30px;
 	cursor: pointer;
-}
-
-@media screen and (max-width:1000px){
-	.gameover #msg{
-		font-size:32px;
-	}
-	.gameover .btn{
-		font-size:20px;
-	}
 }
 
 @media screen and (max-width: 600px){
@@ -208,11 +199,11 @@ i{
 	.keyrow .delete{
 		font-size: 4px;
 	}
-	.gameover #msg{
+	.gameover div{
 		font-size:25px;
 	}
 	.gameover .btn{
-		font-size:15px;
+		font-size: 15px;
 	}
 
 }
@@ -227,6 +218,5 @@ i{
 	.keyboard{
 		transform: scale(0.65);
 	}
-
 
 }
