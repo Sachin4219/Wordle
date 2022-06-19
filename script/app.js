@@ -685,17 +685,48 @@ var index;
 var word = "";
 const wordLen = 5;
 const tryLim = 6; 
+const alphabets = {
+					"a": false,
+					"b": false,
+					"c": false,
+					"d": false,
+					"e": false,
+					"f": false,
+					"g": false,
+					"h": false,
+					"i": false,
+					"j": false,
+					"k": false,
+					"l": false,
+					"m": false,
+					"n": false,
+					"o": false,
+					"p": false,
+					"q": false,
+					"r": false,
+					"s": false,
+					"t": false,
+					"u": false,
+					"v": false,
+					"w": false,
+					"x": false,
+					"y": false,
+					"z": false
+				};
 
 var answer;
-const winmessage = "Congrtulations you won";
+const winmessage = "Congratulations you won";
 const losemessage = "Better Luck Next Time";
 
 
+
 const grid = document.querySelectorAll(".row");
+// FInd the keys of keyboard
 const keys = document.querySelectorAll(".keyrow div");
 const overmessage = document.querySelector(".gameover");
 const retry = document.querySelector(".gameover .btn");
 const message = document.querySelector("#msg");
+
 
 message.textContent = losemessage;
 
@@ -706,7 +737,16 @@ function reset(){
 	answer = allWords[randIndex];
 	console.log("Word -",answer);
 
+	for(var i=0; i<wordLen; i++){
+		alphabets[answer[i]] = true;
+	}
+
 	message.textContent = losemessage;
+
+	keys.forEach(key => {
+			key.style.backgroundColor = "#D1D1D1"
+			key.style.color = "#222"
+	})
 
 	for(var i=0; i<tryLim; i++){
 		for(var j=0; j<wordLen; j++){
@@ -718,7 +758,10 @@ function reset(){
 	grid[curRow].children[index].style.backgroundColor="#eee";
 }
 
-// reset();
+reset();
+
+
+// Check which letters come in word green em or yellow em and gray out rest
 
 function check(inWord){
 	inWord = inWord.toLowerCase();
@@ -736,21 +779,41 @@ function check(inWord){
 		elem.color = "#fff";
 
 		for(var j=0; j<wordLen ;j++){
+			// If letter match : Yellow
 			if(inWord[i] == answer[j]){
 				elem.backgroundColor = "#c9b458";
 			}
+			// If letter does'nt match : Grey 
 			else{
+				// If letter not colored already color it 
 				if(elem.backgroundColor == ""){
 					elem.backgroundColor = "#787c7e";
 					
 				}
 			}
+			// If letter & index both match : Green
 			if(inWord[i] == answer[i]){
 				elem.backgroundColor = "#6aaa64";
 			}
 		}
 	}
+	// Find the letters that don't exists in answer 
+	const wrongLetters = [];
+	for(var i=0;i<wordLen;i++){
+		if(answer.indexOf(inWord[i]) == -1){
+			wrongLetters.push(inWord[i]);
+		}
+	}
 
+	// Color Grey the keys that don't exist in answer word 
+	keys.forEach(key => {
+		const idx = wrongLetters.indexOf(key.textContent.toLowerCase())
+		
+		if(idx !== -1){
+			key.style.backgroundColor = "#787c7e"
+			key.style.color = "#fff"
+		}
+	})
 	// Count of correct words
 	for (var i = 0; i < wordLen; i++) {
 		let elem = grid[curRow].children[i].style;
@@ -769,7 +832,6 @@ function check(inWord){
 }
 
 
-reset();
 
 document.addEventListener('keydown', function(event) {
     var elem = grid[curRow].children;
@@ -806,9 +868,6 @@ document.addEventListener('keydown', function(event) {
 				alert("You cannot enter now");
 		else{
 			check(word);
-			// word = "";
-			// index = 0;
-			// curRow=curRow + 1;
 
 			if(curRow >= tryLim){
 				overmessage.style.visibility = "visible";
@@ -849,19 +908,19 @@ keys.forEach((elem) => {
 			}
 		}
 		else if(str == ""){
-		if(index < 1){
-			alert("No character here");
-			return;
-		}
+			if(index < 1){
+				alert("No character here");
+				return;
+			}
     		if(grid[curRow].children[index]){
 				grid[curRow].children[index].style.backgroundColor = "#fff";
 				grid[curRow].children[index].style = "transform:scale(1.0)";
     		}
     		index = index - 1;
     		word = word.slice(0,index);
-		grid[curRow].children[index].firstChild.textContent = "";
-		grid[curRow].children[index].style = "transform:scale(1.05)";
-		grid[curRow].children[index].style.backgroundColor = "#eee";
+			grid[curRow].children[index].firstChild.textContent = "";
+			grid[curRow].children[index].style = "transform:scale(1.05)";
+			grid[curRow].children[index].style.backgroundColor = "#eee";
 		}
 		else{
 			if(index >= wordLen)
