@@ -4,7 +4,8 @@ To play a game come [here](https://sachin4219.github.io/Wordle/)
 
 Screenshots
 
-![photo](./images/wordle-try.png =6400x480)
+<img src="./images/wordle-try.png">
 
 
-![photo](./images/wordle-win.png =6400x480)
+
+<img src="./images/wordle-win.png">
